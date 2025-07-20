@@ -10,75 +10,61 @@ public class Principal {
             Scanner lectura = new Scanner(System.in);
             ConsultaRatios.exhibirMenu();
             opcion = lectura.nextInt();
+            String mensaje = "Ingresa el monto a convertir";
             switch (opcion){
                 case 1:
+                    String nacionalidadHacia = "ARS";
                     Scanner lectura1 = new Scanner(System.in);
-                    System.out.println("Ingresa el monto a convertir");
-                    double valor1 = lectura1.nextDouble();
+                    double valor1 = ConsultaRatios.leerDoubleSeguro(lectura1, mensaje );
                     double total = ratios
                             .convierteRatios(valor1,ratiosActuales.conversionRates()
-                                    .get("ARS"), false  );
-                    System.out.println("El total es: " + total );
+                                    .get(nacionalidadHacia), false  );
+                    System.out.println("El total es: " + total + " " + nacionalidadHacia);
                     break;
                 case 2:
+                    String nacionalidadHacia2 = "USD", nacionalidadDe2 = "ARS";
                     Scanner lectura2 = new Scanner(System.in);
-                    System.out.println("Ingresa el monto a convertir");
-                    double valor2 = 0;
-                    try {
-                        valor2 = lectura2.nextDouble();
-                    } catch (InputMismatchException e) {
-                        throw new RuntimeException("ingresa un valor valido, con comas puede ser");
-                    }
+                    double valor2 = ConsultaRatios.leerDoubleSeguro(lectura2, mensaje );;
                     double total2 = ratios
                             .convierteRatios(valor2,ratiosActuales.conversionRates()
-                                    .get("ARS"),true);
-                    System.out.println("El total es: " + total2 );
+                                    .get(nacionalidadDe2),true);
+                    System.out.println("El total es: " + total2 + " " + nacionalidadHacia2);
                     break;
                 case 3:
+                    String nacionalidadHacia3 = "BRL";
                     Scanner lectura3 = new Scanner(System.in);
-                    System.out.println("Ingresa el monto a convertir");
-                    double valor3 = lectura3.nextDouble();
+                    double valor3 = ConsultaRatios.leerDoubleSeguro(lectura3, mensaje );
                     double total3 = ratios
                             .convierteRatios(valor3,ratiosActuales.conversionRates()
-                                    .get("BRL"), false  );
-                    System.out.println("El total es: " + total3 );
+                                    .get(nacionalidadHacia3), false  );
+                    System.out.println("El total es: " + total3 + nacionalidadHacia3 );
                     break;
                 case 4:
+                    String nacionalidadDe4 = "BRL", nacionalidadHacia4 = "USD";
                     Scanner lectura4 = new Scanner(System.in);
-                    System.out.println("Ingresa el monto a convertir");
-                    double valor4 = 0;
-                    try {
-                        valor4 = lectura4.nextDouble();
-                    } catch (InputMismatchException e) {
-                        throw new RuntimeException("ingresa un valor valido, con comas puede ser");
-                    }
+                    double valor4 = ConsultaRatios.leerDoubleSeguro(lectura4, mensaje );
                     double total4 = ratios
                             .convierteRatios(valor4,ratiosActuales.conversionRates()
-                                    .get("BRL"),true);
-                    System.out.println("El total es: " + total4 );
+                                    .get(nacionalidadDe4),true);
+                    System.out.println("El total es: " + total4  + nacionalidadHacia4);
                     break;
                 case 5:
+                    String nacionalidadDe5 = "COP";
                     Scanner lectura5 = new Scanner(System.in);
-                    System.out.println("Ingresa el monto a convertir");
-                    double valor5 = lectura5.nextDouble();
+                    double valor5 = ConsultaRatios.leerDoubleSeguro(lectura5, mensaje );
                     double total5 = ratios
                             .convierteRatios(valor5,ratiosActuales.conversionRates()
-                                    .get("COP"), false  );
-                    System.out.println("El total es: " + total5 );
+                                    .get(nacionalidadDe5), false  );
+                    System.out.println("El total es: " + total5 + nacionalidadDe5);
                     break;
                 case 6:
+                    String nacionalidadHacia6 = "USD", nacionalidadDe6 = "COP";
                     Scanner lectura6 = new Scanner(System.in);
-                    System.out.println("Ingresa el monto a convertir");
-                    double valor6 = 0;
-                    try {
-                        valor6 = lectura6.nextDouble();
-                    } catch (InputMismatchException e) {
-                        throw new RuntimeException("ingresa un valor valido, con comas puede ser");
-                    }
+                    double valor6 = ConsultaRatios.leerDoubleSeguro(lectura6, mensaje );
                     double total6 = ratios
                             .convierteRatios(valor6,ratiosActuales.conversionRates()
-                                    .get("COP"),true);
-                    System.out.println("El total es: " + total6 );
+                                    .get(nacionalidadDe6),true);
+                    System.out.println("El total es: " + total6 + nacionalidadHacia6);
                     break;
                 default:
                     System.out.println("Conversor de monedas, elija entre opciones 1 a 7");

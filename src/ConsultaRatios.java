@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Scanner;
 
 public class ConsultaRatios {
 public RatiosDeConversion ObtieneRatios(){
@@ -47,6 +48,20 @@ public static void exhibirMenu(){
     System.out.println("7) salir");
     System.out.println("Elija una opción Válida");
     System.out.println("*********************************");
+}
+
+public static double leerDoubleSeguro(Scanner sc, String mensaje){
+    while (true){
+        System.out.println(mensaje);
+        if (sc.hasNextDouble()){
+            double v = sc.nextDouble();
+            sc.nextLine();
+            return v;
+        } else {
+            String invalido = sc.next();
+            System.out.println(invalido + "No es un numero valido");
+        }
+    }
 }
 
 }
