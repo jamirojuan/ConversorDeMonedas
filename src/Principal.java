@@ -1,4 +1,4 @@
-import java.util.InputMismatchException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Principal {
@@ -6,11 +6,13 @@ public class Principal {
         ConsultaRatios ratios = new ConsultaRatios();
         RatiosDeConversion ratiosActuales = ratios.ObtieneRatios();
         int opcion = 0;
+        DecimalFormat df = new DecimalFormat("#.00");
         while(opcion != 7) {
             Scanner lectura = new Scanner(System.in);
             ConsultaRatios.exhibirMenu();
-            opcion = lectura.nextInt();
             String mensaje = "Ingresa el monto a convertir";
+            opcion = (int) (ConsultaRatios.leerDoubleSeguro(lectura, ""));
+            //opcion = lectura.nextInt();
             switch (opcion){
                 case 1:
                     String nacionalidadHacia = "ARS";
@@ -19,16 +21,16 @@ public class Principal {
                     double total = ratios
                             .convierteRatios(valor1,ratiosActuales.conversionRates()
                                     .get(nacionalidadHacia), false  );
-                    System.out.println("El total es: " + total + " " + nacionalidadHacia);
+                    System.out.println("El total es: " + df.format(total) + " " + nacionalidadHacia);
                     break;
                 case 2:
                     String nacionalidadHacia2 = "USD", nacionalidadDe2 = "ARS";
                     Scanner lectura2 = new Scanner(System.in);
-                    double valor2 = ConsultaRatios.leerDoubleSeguro(lectura2, mensaje );;
+                    double valor2 = ConsultaRatios.leerDoubleSeguro(lectura2, mensaje );
                     double total2 = ratios
                             .convierteRatios(valor2,ratiosActuales.conversionRates()
                                     .get(nacionalidadDe2),true);
-                    System.out.println("El total es: " + total2 + " " + nacionalidadHacia2);
+                    System.out.println("El total es: " + df.format(total2) + " " + nacionalidadHacia2);
                     break;
                 case 3:
                     String nacionalidadHacia3 = "BRL";
@@ -37,7 +39,7 @@ public class Principal {
                     double total3 = ratios
                             .convierteRatios(valor3,ratiosActuales.conversionRates()
                                     .get(nacionalidadHacia3), false  );
-                    System.out.println("El total es: " + total3 + nacionalidadHacia3 );
+                    System.out.println("El total es: " + df.format(total3) + " " + nacionalidadHacia3 );
                     break;
                 case 4:
                     String nacionalidadDe4 = "BRL", nacionalidadHacia4 = "USD";
@@ -46,7 +48,7 @@ public class Principal {
                     double total4 = ratios
                             .convierteRatios(valor4,ratiosActuales.conversionRates()
                                     .get(nacionalidadDe4),true);
-                    System.out.println("El total es: " + total4  + nacionalidadHacia4);
+                    System.out.println("El total es: " + df.format(total4)  + " " + nacionalidadHacia4);
                     break;
                 case 5:
                     String nacionalidadDe5 = "COP";
@@ -55,7 +57,7 @@ public class Principal {
                     double total5 = ratios
                             .convierteRatios(valor5,ratiosActuales.conversionRates()
                                     .get(nacionalidadDe5), false  );
-                    System.out.println("El total es: " + total5 + nacionalidadDe5);
+                    System.out.println("El total es: " + df.format(total5) + " " + nacionalidadDe5);
                     break;
                 case 6:
                     String nacionalidadHacia6 = "USD", nacionalidadDe6 = "COP";
@@ -64,7 +66,7 @@ public class Principal {
                     double total6 = ratios
                             .convierteRatios(valor6,ratiosActuales.conversionRates()
                                     .get(nacionalidadDe6),true);
-                    System.out.println("El total es: " + total6 + nacionalidadHacia6);
+                    System.out.println("El total es: " + df.format(total6) + " " + nacionalidadHacia6);
                     break;
                 default:
                     System.out.println("Conversor de monedas, elija entre opciones 1 a 7");
